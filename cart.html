@@ -173,41 +173,25 @@
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
     <script>
-        const removeProductButtons = document.querySelectorAll('.remove-product');
-        removeProductButtons.forEach(button => {
-            button.addEventListener('click', removeProduct);
+        $(document).ready(function () {
+            $('.remove-product').click(function (event) {
+                event.preventDefault();
+                $(this).closest('tr').remove();
+            });
+
+            $('#coupon button').click(function () {
+                const couponValue = $('#coupon input').val();
+                // Apply coupon logic here
+                alert('Coupon applied successfully!');
+            });
+
+            $('#subtotal button').click(function () {
+                window.location.href = 'checkout.html';
+            });
         });
-
-        function removeProduct(event) {
-            event.preventDefault();
-
-            const row = event.target.closest('tr');
-            row.remove();
-        }
-        // Add your JavaScript code here
-        const applyCouponButton = document.querySelector('#coupon button');
-        applyCouponButton.addEventListener('click', applyCoupon);
-
-        function applyCoupon() {
-            // Retrieve the coupon input value
-            const couponInput = document.querySelector('#coupon input');
-            const couponValue = couponInput.value;
-
-            // Apply coupon logic here
-
-            // Display a success message
-            alert('Coupon applied successfully!');
-        }
-
-        const proceedToCheckoutButton = document.querySelector('#subtotal button');
-        proceedToCheckoutButton.addEventListener('click', proceedToCheckout);
-
-        function proceedToCheckout() {
-            // Redirect to the checkout page or perform any necessary actions
-            window.location.href = 'checkout.html';
-        }
     </script>
 </body>
 
